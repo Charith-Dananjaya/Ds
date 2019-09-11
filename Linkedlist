@@ -39,12 +39,34 @@ class Linked_List:
 
     def insert_mid(self, new_node, value):
         current_node = self.head
-        while current_node.data != value and current_node:
+        while current_node:
+            if current_node.data == value:
+                break
             current_node = current_node.next_node
-        new_node.next_node = current_node.next_node
-        current_node.next_node = new_node
+        if current_node:
+            new_node.next_node = current_node.next_node
+            current_node.next_node = new_node
+        else:
+            print("The value u entered is not available")
 
+    def deletion(self, value):
+        prev_node = None
+        current_node = self.head
 
+        while current_node:
+            if current_node.data == value:
+                    break
+            # current_node = current_node.next_node
+            prev_node = current_node
+            current_node = current_node.next_node
+        if prev_node == None :
+            self.head = current_node.next_node
+        else:
+            prev_node.next_node = current_node.next_node
+        if current_node.next_node == None:
+            self.tail = prev_node
+        else:
+            print("There is no list ")
 
 
 list_1 = Linked_List()
@@ -52,6 +74,7 @@ list_1.insert_front(Node(data=3))
 list_1.insert_front(Node(data=5))
 list_1.insert_end(Node(data=10))
 list_1.insert_end(Node(data=11))
-list_1.insert_mid(Node(data=7, next_node=None),  value = 10)
+list_1.insert_mid(Node(data=7, next_node=None),  value=5)
+list_1.deletion(value=11)
 list_1.traverse()
 print(list_1.is_empty())
