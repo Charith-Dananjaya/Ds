@@ -1,0 +1,40 @@
+class Stack:
+    def __init__(self):
+        self.head = None
+
+    def is_empty(self):
+        if self.head:
+            return False
+        else:
+            return True
+    def push(self, new_node):
+         new_node.next_node = self.head
+         self.head = new_node
+
+    def pop(self):
+        if self.is_empty():
+            print("stack doesn't exist")
+        else:
+            d = self.head.data
+            self.head = self.head.next_node
+            return d
+
+    def peek(self):
+        if self.is_empty():
+            print("Stack doesn't exist")
+        else:
+            print(self.head.data)
+
+
+
+
+
+class Node:
+    def __init__(self, data=None, next_node=None):
+        self.data = data
+        self.next_node = next_node
+
+
+stack_1 = Stack()
+stack_1.push(Node(data=7))
+stack_1.push(Node(data=8))
